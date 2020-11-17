@@ -1,0 +1,110 @@
+<!---
+This is a sample base.html. Feel free to buit on top of this or generate your own base.html files
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://fonts.xz.style/serve/inter.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css">
+        <title>Kubernetes</title>
+    </head>
+    <header>
+        Kubernetes
+    </header>
+    <body>
+        <p>tags: #public #docker #microservice</p>
+
+<ul>
+<li>Useful tutorials
+
+<ul>
+<li><a href="https://www.youtube.com/watch?v=1xo-0gCVhTU">https://www.youtube.com/watch?v=1xo-0gCVhTU</a></li>
+<li><a href="https://classroom.udacity.com/courses/ud615">https://classroom.udacity.com/courses/ud615</a></li>
+<li><a href="https://www.udemy.com/course/docker-and-kubernetes-the-complete-guide/">https://www.udemy.com/course/docker-and-kubernetes-the-complete-guide/</a></li>
+</ul></li>
+<li>Take a declared state and make it happen</li>
+<li>Vocabulary
+
+<ul>
+<li>Node
+
+<ul>
+<li>Instance of a computer that runs kuberentes</li>
+<li>It communicates with the master Node.</li>
+<li>It runs pods</li>
+</ul></li>
+<li>Pod
+
+<ul>
+<li>Pod runs 1+ containers</li>
+<li>Exists on a Node</li>
+</ul></li>
+<li>Service
+
+<ul>
+<li>Handles requests from one node to another</li>
+<li>Or public requests to master node.</li>
+<li>Normally a load balancer.</li>
+</ul></li>
+<li>Deployment
+
+<ul>
+<li>Defines desirned state.</li>
+</ul></li>
+</ul></li>
+<li>Use Minikube to start a local Kubernetes cluster</li>
+<li>Deployment file (Yaml or JSON)
+&ldquo;`yml
+kind: Service
+apiVersion: v1
+metadata:
+name: exampleservice
+spec:
+selector:
+app: myapp
+ports:
+
+<ul>
+<li><p>protocol: &ldquo;TCP&rdquo;</p>
+
+<h1>Port accessible inside cluster</h1>
+
+<p>port: 8081</p>
+
+<h1>Port to forward to inside the pod</h1>
+
+<p>targetPort: 8080</p>
+
+<h1>Port accessible outside cluster</h1>
+
+<p>nodePort: 30002
+type: LoadBalancer</p></li>
+</ul></li>
+</ul>
+
+<p>apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: myappdeployment
+spec:
+  replicas: 5
+  template:
+    metadata:
+      labels:
+        app: myapp
+    spec:
+      containers:
+        - name: myapp
+          image: jamesquigley/exampleapp:v1.0.0
+          ports:
+            - containerPort: 8080
+  &ldquo;`</p>
+
+    </body>
+</html>
+
+<h3>Backlinks</h3>
+<ul>
+<li><a href='docker.html'>docker</a></li>
+
+</ul>

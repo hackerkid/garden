@@ -1,0 +1,109 @@
+<!---
+This is a sample base.html. Feel free to buit on top of this or generate your own base.html files
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://fonts.xz.style/serve/inter.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css">
+        <title>Go basic syntax</title>
+    </head>
+    <header>
+        Go basic syntax
+    </header>
+    <body>
+        <p>tags: #public</p>
+
+<ul>
+<li><p>Go programs are organized into packages</p>
+
+<ul>
+<li>Go Package is a collection of go files in the same directory that are compiled togather</li>
+<li>Functions, types, variables etc declared in one source files visible to other source files.</li>
+<li>Programs start running in package <code>main</code></li>
+</ul></li>
+
+<li><p>A repository contains one or more Go Modules.</p>
+
+<ul>
+<li><code>go.md</code> declares <code>module path</code>: Import path prefix of all the packages with the module.</li>
+<li>Initialize the go module
+<code>go mod init github.com/hackerkid/hello-go</code></li>
+<li>Install the local go module (Should be in the in the same directory as the module)
+
+<ul>
+<li>Various ways to install a local go module
+
+<ul>
+<li><code>go install github.com/hackerkid/hello-go</code></li>
+<li><code>go install .</code></li>
+<li><code>go install</code></li>
+</ul></li>
+<li>The command build the program, creates an executable and put it in <code>$HOME/go/bin</code>
+
+<ul>
+<li>The directory can be overrided by setting <code>GOPATH</code> and <code>GOBIN</code>
+
+<ul>
+<li>if <code>GOPATH</code> is set the binaries are installed to the <code>bin</code> directory of <code>GOPATH</code></li>
+<li>If <code>GOBIN</code> is set the binaries are installed to the <code>GOPATH</code> directory</li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+
+<li><p>Go imports</p>
+
+<pre><code class="language-go"># factored
+import (
+	&quot;fmt&quot;
+	&quot;math&quot;
+)
+
+
+import &quot;fmt&quot;
+import &quot;path&quot;
+</code></pre></li>
+
+<li></li>
+</ul>
+
+<p><strong>Sample code</strong></p>
+
+<pre><code class="language-go">
+package main
+
+import (
+	&quot;fmt&quot;
+	&quot;io/ioutill&quot;
+	m &quot;math&quot;
+	&quot;os&quot;
+	&quot;strconv&quot;
+)
+
+func main() {
+	fmt.Println(&quot;Hello world&quot;)
+	
+	beyondHello()
+
+}
+
+func beyondHello() {
+	var x int
+	x = 3
+	y := 4
+	sum, prod = learnMultiple(x, y)
+	fmt.Println(&quot;sum: &quot;, sum, &quot;prod:&quot;, prod)
+
+}
+
+</code></pre>
+
+    </body>
+</html>
+
+<h3>Backlinks</h3>
+<ul>
+<li><a href='go.html'>go</a></li>
+
+</ul>

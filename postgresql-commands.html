@@ -1,0 +1,55 @@
+<!---
+This is a sample base.html. Feel free to buit on top of this or generate your own base.html files
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://fonts.xz.style/serve/inter.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css">
+        <title>PostgreSQL Commands</title>
+    </head>
+    <header>
+        PostgreSQL Commands
+    </header>
+    <body>
+        <p>tags: #public #sql</p>
+
+<p>1) Show the table structure in PostgreSQL</p>
+
+<pre><code>```sql
+\d table_name
+```
+</code></pre>
+
+<p>2) Display all tables
+	<code>sql
+	\dt
+	</code>
+3) Export as CSV
+	<code>sql
+	\copy (SELECT expression) TO filename csv header;
+	</code>
+	header - Include the header
+4) Join topics with posts and export
+	<code>sql
+	\ copy (
+    SELECT
+        app_post.title,
+        app_post.summary,
+        array_to_string(array_agg(app_topic.slug), ',')
+    FROM
+        app_post_topics
+        LEFT OUTER JOIN app_post ON app_post_topics.post_id = app_post.id
+        LEFT OUTER JOIN app_topic ON app_post_topics.topic_id = app_topic.id
+    GROUP BY
+        app_post.id
+	) to posts.csv csv header;
+	</code></p>
+
+    </body>
+</html>
+
+<h3>Backlinks</h3>
+<ul>
+
+</ul>

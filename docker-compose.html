@@ -1,0 +1,61 @@
+<!---
+This is a sample base.html. Feel free to buit on top of this or generate your own base.html files
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://fonts.xz.style/serve/inter.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css">
+        <title>docker-compose</title>
+    </head>
+    <header>
+        docker-compose
+    </header>
+    <body>
+        <p>tags: #public #docker</p>
+
+<ul>
+<li>Automatically builds (or get images from a docker hub) and start the containers (services)</li>
+<li>docker-compose.yaml is used for specifying how to start each container
+
+<ul>
+<li>A name to each container (service)</li>
+<li>Dockerfile to build or which image to get</li>
+<li>How to map the port requests from the host machine to the container</li>
+<li>How to mount volumes etc</li>
+</ul></li>
+<li>Docker compose also starts a virtual network.
+
+<ul>
+<li>So you can create requests to <a href="http://database">http://database</a>, <a href="http://web">http://web</a>, <a href="http://product-service">http://product-service</a> etc</li>
+</ul></li>
+<li>You can also start docker-compose in detached mode.</li>
+</ul>
+
+<pre><code class="language-yml">version : '3'
+services:
+	recommendtion-service:
+		build: ./recommendation
+		volumes:
+			- ./recommendation:/home/recommendation
+		ports:
+			- 8001:80
+	newsfeed-service:
+		image: django:python-3
+		volumes:
+			- ./newsfeed:/home/newsfeed
+		ports:
+			- 8002:80
+	depends_on:
+		- recommendation-service
+
+</code></pre>
+
+    </body>
+</html>
+
+<h3>Backlinks</h3>
+<ul>
+<li><a href='docker-zulip.html'>docker-zulip</a></li>
+
+</ul>

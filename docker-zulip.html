@@ -1,0 +1,73 @@
+<!---
+This is a sample base.html. Feel free to buit on top of this or generate your own base.html files
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://fonts.xz.style/serve/inter.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css">
+        <title>docker-zulip</title>
+    </head>
+    <header>
+        docker-zulip
+    </header>
+    <body>
+        <p>tags: #zulip #docker #docker-compose #public</p>
+
+<ul>
+<li>zulip support running via <a href='docker.html'>docker</a></li>
+<li><a href='docker-compose.html'>docker-compose</a> is used for managing the containers</li>
+<li>Contains  Dockerfile, docker compose file and kubernetes files</li>
+<li>There are mainly 5 docker images
+
+<ul>
+<li>database
+
+<ul>
+<li>Mantained by us</li>
+<li>The <code>POSTGRES_DB</code>, <code>POSTGRES_USER</code> and <code>POSTGRES_PASSWORD</code> is specified as environment variables in docker-compose.yaml</li>
+<li>So when the image is started the environment variables would be set.</li>
+</ul></li>
+<li>redis
+
+<ul>
+<li>Taken from dockerhub</li>
+<li>The <code>REDIS_PASSWORD</code> is set as environment variable. When the container is started it is appended to <code>/etc/redis.conf</code> and the <code>redis-server</code> is started.</li>
+</ul></li>
+<li>memcached
+
+<ul>
+<li>Taken from dockerhub</li>
+<li>Memcached uses <code>sasl</code> for authentication
+
+<ul>
+<li><code>SASL_CONF_PATH</code>, <code>MEMCACHED_SASL_PWDB</code> and <code>MEMCACHED_PASSWORD</code> are set as environment variables.</li>
+<li>When the image is created the configuration file is created.
+
+<ul>
+<li>The authentication mechanisam is to set <code>plain</code></li>
+<li>User</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>rabitmq
+
+<ul>
+<li>Taken from dockerhub</li>
+</ul></li>
+<li>zulip
+
+<ul>
+<li>Ofcourse, created and maintained by us</li>
+</ul></li>
+</ul></li>
+<li></li>
+</ul>
+
+    </body>
+</html>
+
+<h3>Backlinks</h3>
+<ul>
+
+</ul>

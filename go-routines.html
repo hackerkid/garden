@@ -1,0 +1,79 @@
+<!---
+This is a sample base.html. Feel free to buit on top of this or generate your own base.html files
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://fonts.xz.style/serve/inter.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css">
+        <title>Go routines</title>
+    </head>
+    <header>
+        Go routines
+    </header>
+    <body>
+        <p>tags: #threads #go #processes #register #til #public</p>
+
+<ul>
+<li><p>Go&rsquo;s implementation of threads</p></li>
+
+<li><p>Useful for</p>
+
+<ul>
+<li>I/O concurrency
+
+<ul>
+<li>Waiting for one activity, another can proceed</li>
+</ul></li>
+<li>Paralellisam
+
+<ul>
+<li>Multi core.</li>
+<li>One program use cycyles on multiple cores</li>
+</ul></li>
+<li>Convinience</li>
+</ul></li>
+
+<li><p>Threads vs Process</p>
+
+<ul>
+<li>Operating system takes care of process
+
+<ul>
+<li>Each program has diffrent memory</li>
+</ul></li>
+<li>Inside that you run threads
+
+<ul>
+<li>Threads can share memory, syncronize</li>
+</ul></li>
+</ul></li>
+
+<li><p>Challenges of threads</p>
+
+<ul>
+<li><p>2 or more threads can access the same variable at the same time and do some operations.</p>
+
+<ul>
+<li>ex, n = n + 1
+
+<ul>
+<li>Even though this is only a single line, the machine code can be multiple lines</li>
+<li>LD x, register</li>
+<li>ADD 1, register</li>
+<li>ST register, x</li>
+</ul></li>
+</ul></li>
+
+<li></li>
+</ul></li>
+</ul>
+
+    </body>
+</html>
+
+<h3>Backlinks</h3>
+<ul>
+<li><a href='go.html'>go</a></li>
+
+</ul>

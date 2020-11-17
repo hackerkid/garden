@@ -1,0 +1,85 @@
+<!---
+This is a sample base.html. Feel free to buit on top of this or generate your own base.html files
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://fonts.xz.style/serve/inter.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css">
+        <title>Logging in Django</title>
+    </head>
+    <header>
+        Logging in Django
+    </header>
+    <body>
+        <p>tags: #public</p>
+
+<ul>
+<li>Logging is configured as part of the general Django setup() function.</li>
+<li>There are mainly 4 components
+
+<ul>
+<li>Logger
+
+<ul>
+<li>Handles only messages that are greater than equal to it&rsquo;s log level
+
+<ul>
+<li>There are 5 log levels in Python
+
+<ul>
+<li>DEBUG</li>
+<li>INFO</li>
+<li>WARNING</li>
+<li>ERROR</li>
+<li>CRITICAL</li>
+</ul></li>
+</ul></li>
+<li>Can have multiple handlers for one logger</li>
+<li>The name is usually <code>__name__</code>.
+
+<ul>
+<li><code>logger = logging.getLogger('project.interesting.stuff')</code></li>
+<li><code>project.interesting</code> is a parent of <code>project.interesting.stuff</code></li>
+<li><code>project</code> is a parent of `project.interesting</li>
+<li>So you can define handlers for child loggers in parent level.
+
+<ul>
+<li>Defining a logger on <code>project</code> will capture the logging calls in <code>project.interesting</code> and <code>project.interesting.stuff</code></li>
+<li>There is option to turn this off as well.</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>Handlers
+
+<ul>
+<li>Handlers decide what to do with the mesage
+
+<ul>
+<li>eg ; write message to screen, file, socket etc</li>
+<li>Handlers also have log levels. So the message should atleast have the log level of the handler.</li>
+</ul></li>
+</ul></li>
+<li>Filters
+
+<ul>
+<li>Provides additional control on what messages are passed from logger to handlers.</li>
+<li>Can update the log level of the message if necessary/</li>
+<li>Can be installed on loggers or handlers</li>
+</ul></li>
+<li>Formatters
+
+<ul>
+<li>Every record is rendered at text at the end.</li>
+<li>Formatter describes the exact format of the text.</li>
+</ul></li>
+</ul></li>
+</ul>
+
+    </body>
+</html>
+
+<h3>Backlinks</h3>
+<ul>
+
+</ul>

@@ -1,0 +1,63 @@
+<!---
+This is a sample base.html. Feel free to buit on top of this or generate your own base.html files
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://fonts.xz.style/serve/inter.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css">
+        <title>CountStats</title>
+    </head>
+    <header>
+        CountStats
+    </header>
+    <body>
+        <p>tags: #zulip #analytics #public #countstat</p>
+
+<ul>
+<li><code>active_users:is_bot:day</code> - Keep track of is_active users in realm.
+
+<ul>
+<li>Stored in <code>RealmCount</code></li>
+<li>Populates the table by counting is_active users
+
+<ul>
+<li>So if the user was deactivated after the day is over it wont be counted.</li>
+</ul></li>
+<li>Not used in /analytics</li>
+</ul></li>
+<li><code>active_users_audit:is_bot:day</code> - Keep track of all the currently is_active users
+
+<ul>
+<li>Stored in <code>UserCount</code></li>
+<li>Sees whether the last realm audit log entry is created, activated, reactivated etc rather than deactivated</li>
+<li>Used for generating <code>realm_active_humans::day</code></li>
+<li>Used for showing users as all_time in analytics
+
+<ul>
+<li>Basically all users that were never deactivated.</li>
+</ul></li>
+</ul></li>
+<li><code>active_users_log:is_bot:day</code> - Keep tracks of number of users activated/deactivated (activated - deactivated) each day.
+
+<ul>
+<li>This is a <code>LoggingCountStat</code></li>
+<li>Unlike CountStats, this is populated right at the time of user creation/deactivation etc.</li>
+</ul></li>
+</ul>
+
+<hr>
+
+<ul>
+<li><code>1day_actives::day</code> - Users who have activity interval in last 1 day.</li>
+<li></li>
+</ul>
+
+    </body>
+</html>
+
+<h3>Backlinks</h3>
+<ul>
+<li><a href='how-zulip-analytics-work.html'>How Zulip Analytics work</a></li>
+
+</ul>

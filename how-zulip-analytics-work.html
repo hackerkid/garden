@@ -1,0 +1,118 @@
+<!---
+This is a sample base.html. Feel free to buit on top of this or generate your own base.html files
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://fonts.xz.style/serve/inter.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css">
+        <title>How Zulip Analytics work</title>
+    </head>
+    <header>
+        How Zulip Analytics work
+    </header>
+    <body>
+        <p>tags: #public</p>
+
+<ul>
+<li><p>Currently used for tracking various statistics in /stats</p>
+
+<ul>
+<li>In future would be used for showing statistics of various streams</li>
+</ul></li>
+
+<li><p>Designed around</p>
+
+<ul>
+<li>Minimal impact on scalability and service complexity</li>
+<li>Well tested</li>
+<li>Efficent to query, so that the data can be displayed easily on stream page for example without perfomance issues.</li>
+<li>Storage size should be smaller than the main Message/Usermessage tables so we don&rsquo;t need any additional database.</li>
+</ul></li>
+
+<li><p>Has 3 main components</p>
+
+<ul>
+<li>models: <code>UserCount</code>, <code>RealmCount</code>, <code>StreamCount</code> and <code>InstallationCount</code>
+
+<ul>
+<li>Contains
+
+<ul>
+<li>property <code>activity_users:is_bot:hour</code>
+
+<ul>
+<li>Of the form <code>name:subgroup:period</code></li>
+</ul></li>
+<li>subroup: eg <code>False</code></li>
+<li>end_time</li>
+<li>Foreign key fileds to UserProfile, Stream, Realm etc</li>
+<li>value</li>
+</ul></li>
+</ul></li>
+<li><a href='countstats.html'>CountStats</a> define what stats should be generated and stored in which tables.</li>
+<li><code>FillState</code> keep tracks of when the last time the cron job updated each stat.</li>
+</ul></li>
+
+<li><p>Counts are initially collected into <code>UserCount</code>, <code>RealmCount</code> or <code>StreamCount</code></p>
+
+<ul>
+<li><code>UserCount</code> and <code>StreamCount</code> are aggregated into <code>RealmCount</code>
+
+<ul>
+<li>eg  <code>messages_sent:client:day</code> has rows in <code>UserCount</code> with values of UserProfile, client and endtime</li>
+<li>When they are aggregated to <code>RealmCount</code> it has rows with values Realm, client and endtime.</li>
+</ul></li>
+<li><code>RealmCounts</code> are aggregated into <code>InstallationCount</code>
+
+<ul>
+<li>With values client and endtime</li>
+</ul></li>
+</ul></li>
+
+<li><p>Rows with value 0 are not stored</p></li>
+
+<li><p>Perfomance</p>
+
+<ul>
+<li>An analytics system will end up requiring something like hadoop if it&rsquo;s not managed carefully.</li>
+<li>So Zulip analytics system is designed carefully so that the data can be processed by a single system.</li>
+<li>Also need to make sure that expensive queries are not made again <code>Message</code> and <code>UserMessage</code> tables since they are really big.</li>
+<li>Some key design principles
+
+<ul>
+<li>Don&rsquo;t repeat the work using fillstate.</li>
+<li>Storing data in <code>Count</code> tables ensure that we don&rsquo;t hit large tables like <code>Message</code> and <code>UserMessage</code> for generating analytics data.</li>
+<li>Doing expensive operations inside the database rather than getting the data to Python and putting it back.
+
+<ul>
+<li>eg: Insert into table2 select * from table1.</li>
+</ul></li>
+</ul></li>
+<li>Aggregating instead of creating additional queries to Message and UserMessage tables.
+
+<ul>
+<li>eg: Make a query for generating UserCount and generate RealmCount from UserCount rather than making additional queries.</li>
+</ul></li>
+<li>Don&rsquo;t store values with 0 since they take up too much memory.
+
+<ul>
+<li>An hourly stat would collect .5MB of data per user.</li>
+<li>Which comes down to 24 * 365 * .5MB ~= 4GB per user.</li>
+</ul></li>
+</ul></li>
+
+<li><p>See <code>LoggingCountStat</code> for generating stats for data that are not worth storing every data point for.</p></li>
+
+<li><p>When adding a new table make sure to edit and run <code>populate_analytics_db</code> so that the fake data is generated in dev environment.</p></li>
+
+<li></li>
+</ul>
+
+    </body>
+</html>
+
+<h3>Backlinks</h3>
+<ul>
+
+</ul>

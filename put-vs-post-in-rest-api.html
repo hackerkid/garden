@@ -1,0 +1,50 @@
+<!---
+This is a sample base.html. Feel free to buit on top of this or generate your own base.html files
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://fonts.xz.style/serve/inter.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css">
+        <title>PUT vs POST in REST API</title>
+    </head>
+    <header>
+        PUT vs POST in REST API
+    </header>
+    <body>
+        <p>tags: #public</p>
+
+<p>PUT and POST are not equalent to create and update.</p>
+
+<p>Use PUT when you know the URL of the resource you are trying to create or update.</p>
+
+<pre><code>PUT /posts/existing-post-title/
+Host: diff.blog
+</code></pre>
+
+<pre><code>PUT /posts/new-post-title/
+Host: diff.blog
+</code></pre>
+
+<p>The requests are idempotent. Making the same request again, would result in the same state.</p>
+
+<p>POST can be used for creating a resource which you don&rsquo;t know the URL yet.</p>
+
+<pre><code>POST /posts/
+Host: diff.blog
+
+</code></pre>
+
+<p>You can also use it for updating an existing resource.</p>
+
+<pre><code>POST /posts/existing-post-title
+Host: diff.blog
+</code></pre>
+
+    </body>
+</html>
+
+<h3>Backlinks</h3>
+<ul>
+
+</ul>

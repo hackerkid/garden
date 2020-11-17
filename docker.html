@@ -1,0 +1,96 @@
+<!---
+This is a sample base.html. Feel free to buit on top of this or generate your own base.html files
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://fonts.xz.style/serve/inter.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css">
+        <title>docker</title>
+    </head>
+    <header>
+        docker
+    </header>
+    <body>
+        <p>tags: #public #docker</p>
+
+<h3>Why use docker?</h3>
+
+<ul>
+<li>Same environment everywhere. No need to create seperate environment for each and every OS.</li>
+<li>Sandboxes the applications from each other. Makes dependeny management easy.</li>
+<li>Also great from a security persepctive.</li>
+<li>It&rsquo;s very easy to start an application on docker. You can start everything in a few seconds.</li>
+</ul>
+
+<h3>Docker containers vs VM</h3>
+
+<ul>
+<li>VMs are more resource intensive. Get&rsquo;s full Operating System including the kernel</li>
+<li>Containers are light weight to run compared to VMs.
+
+<ul>
+<li>Takes less disk space, memory and startup in seconds</li>
+</ul></li>
+<li>For example each and every VM in a system has it&rsquo;s own kernel</li>
+<li>Containers don&rsquo;t need to have a seperate kernel since all the linux distributions have the same kernel
+
+<ul>
+<li>How does docker work in Windows?</li>
+<li>How does docker work in Linux?</li>
+</ul></li>
+</ul>
+
+<h3>Containers</h3>
+
+<ul>
+<li>Running instances of an image.</li>
+<li>Contains OS, software, code</li>
+<li>Containers should be ephemeral(short lived). You should be able to create then amd distroy them anytime without lossing anything.</li>
+<li>Dockerfile contains step to create an image and run the application.
+
+<ul>
+<li>You can build the image</li>
+<li>Then start the container</li>
+<li>The command mentioned in <code>ENTRYPOINT</code> would be invoked</li>
+</ul></li>
+<li>Volumes
+
+<ul>
+<li>Let you share the files between containers</li>
+<li>As well as between the container and the host file system</li>
+<li>Don&rsquo;t include the files in the image though.
+
+<ul>
+<li>For that you need to COPY and build.</li>
+</ul></li>
+</ul></li>
+<li>Containers stop when the main process exit
+
+<ul>
+<li>So make sure that there is only one main process per container</li>
+</ul></li>
+<li>Container orchastrization tools like <a href='kubernetes.html'>Kubernetes</a> are used for automating deployment, scaling and management of containarized applications.</li>
+</ul>
+
+<h3>Run</h3>
+
+<pre><code class="language-bash">docker run -p host_port:container_port
+</code></pre>
+
+<p><code>-p</code> - Run in deatched mode</p>
+
+<p>Kill containers</p>
+
+<pre><code>docker kill 24fe0c4ec361 3ec32a5c168a 4f447ffc0b91
+</code></pre>
+
+    </body>
+</html>
+
+<h3>Backlinks</h3>
+<ul>
+<li><a href='microservices.html'>Microservices</a></li>
+<li><a href='docker-zulip.html'>docker-zulip</a></li>
+
+</ul>

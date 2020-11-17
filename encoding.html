@@ -1,0 +1,57 @@
+<!---
+This is a sample base.html. Feel free to buit on top of this or generate your own base.html files
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://fonts.xz.style/serve/inter.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css">
+        <title>Encoding</title>
+    </head>
+    <header>
+        Encoding
+    </header>
+    <body>
+        <p>tags: #public</p>
+
+<ul>
+<li>rolling upgrades - Deploy the new version to a few nodes at time. Make sure that the new version is running smoothly for all.</li>
+<li>backward compatibility - New code can read data written by the old code.</li>
+<li>forward compatiblity - Old code can read data written by new code.</li>
+<li>Programs normally work with data in 2 representations
+
+<ul>
+<li>memory - Data is kept in structs, arrays, lists, hash table etc.
+
+<ul>
+<li>Optimized for efficent access by the CPU normally using a pointer.</li>
+</ul></li>
+<li>sequence of bytes - When you want to send the data over the network or store in a file.</li>
+</ul></li>
+<li>Translation from in memory representation to seqeuence of byes is called encoding. Also called as serializing, marshaling.</li>
+<li>The reverse is called as decoding, parsing, deserialization, unmarshaling etc.</li>
+<li>Many languages support encoding/decoding.
+
+<ul>
+<li>eg Pickle of Python, Marshal of Ruby</li>
+<li>They are convinent cause you need to write minimal code.</li>
+<li>But there are a lot of issues
+
+<ul>
+<li>Highly dependent on the language.</li>
+<li>Decoding involves creating new classes which can be used by an attacker to execute random code.</li>
+<li>Versioning of data is an afterthought.</li>
+<li>Encoding and decoding is not very efficent.</li>
+</ul></li>
+</ul></li>
+<li>Alternative is to use standard encodings like JSON, <a href='xml.html'>XML</a> etc that are supported by many programming languages.</li>
+<li></li>
+</ul>
+
+    </body>
+</html>
+
+<h3>Backlinks</h3>
+<ul>
+
+</ul>
